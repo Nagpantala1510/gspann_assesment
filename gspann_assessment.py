@@ -1,4 +1,10 @@
-def justify_paragraph(paragraph, page_width):
+  def justify_paragraph(paragraph, page_width):
+    # Check if page_width is a positive integer
+    if not isinstance(page_width, int) or page_width <= 0:
+         raise ValueError("Page width should be a positive integer.")
+    # Check if paragraph is a non-empty string
+    if not isinstance(paragraph, str) or not paragraph.strip():
+        raise ValueError("Paragraph should be a non-empty string.")
     # Split the paragraph into individual words
     words = paragraph.split()
     
@@ -69,4 +75,8 @@ page_width = int(input("Enter the page width: "))
 justified_lines = justify_paragraph(paragraph, page_width)
 for line in justified_lines:
     print(line)
-    
+
+except ValueError as ve:
+    print(f"Error: {ve}")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")    
